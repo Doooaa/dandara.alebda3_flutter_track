@@ -9,32 +9,50 @@ void main(List<String> args) {
 
     print(".......................................................");
     print(castom_some(l,((e) => e==3)));
+    print(castom_some(l,((e) => e==10)));
     print(".......................................................");
     print(castom_every(l,((e) => e==3)));
 }
 //....................................................................
+
 bool castom_any(List<int> l,bool Function (int e)cback)
 {
-
-            //take  bool Function (int)
-   return l.any(cback);
   
-}
+   int  c=0;       
+    for (int i = 0; i < l.length; i++) {
+      if(cback(l[i])) c++;
+      if(c>=1) break;
+    
+    }
+    if(c>=1)
+     return true;
+    else return false;
+  } 
+   
+      
+
 bool castom_every(List<int> l,bool Function (int e)cback)
 {
 
             //take  bool Function (int)
-   return l.every(cback);
+    int  c=0;       
+    for (int i = 0; i < l.length; i++) {
+      if(cback(l[i])) c++;
+    }
+    if(c==l.length)
+     return true;
+    else return false;
   
 }
 //.......................................................................
-
 bool castom_some(List<int> l,bool Function (int e)cback)
 {
-   List frequancy=[];
-
-     frequancy= l.where(cback).toList();
-     if(frequancy.length>=2)
+    int  c=0;       
+    for (int i = 0; i < l.length; i++) {
+      if(cback(l[i])) c++;
+    }
+   
+     if(c>=2)
       return true;
      else return false;
 }
